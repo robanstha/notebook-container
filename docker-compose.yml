@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  my-notebook:
+    build:
+      context: .
+    container_name: my-notebook
+    ports:
+      - '9999:9999'
+    volumes:
+      - '../:/projects'
+    restart: always
+    working_dir: /projects
+    command: ['jupyter', 'notebook', '--ip', '*', '--port=9999', '--allow-root', '--NotebookApp.open_browser=False', '--NotebookApp.token=""', '-y']
